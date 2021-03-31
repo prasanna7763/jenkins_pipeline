@@ -56,7 +56,7 @@ stage name:'Deploy to staging', concurrency:1
                 
 }
 
-node{
+node('UbuntuSlave') {
     def mvnHome
     dir('FunctionalTests'){
 
