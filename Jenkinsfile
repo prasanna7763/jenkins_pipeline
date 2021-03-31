@@ -5,17 +5,17 @@ node{
     dir('BuildQuality'){
         stage('Preparation'){
                         
-           // git 'https://github.com/prasanna7763/simple-spring.git'
-          //  mvnHome = tool 'Maven'
+              git 'https://github.com/prasanna7763/simple-spring.git'
+              mvnHome = tool 'MVN'
         }
 
         stage('Build') {
             // Run the maven build
-         /*   if (isUnix()) {
+             if (isUnix()) {
                 sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
             } else {
                 bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-            } */
+            } 
         }
         
         stage('SonarQube Analysis') { 
@@ -50,9 +50,9 @@ node{
 stage name:'Deploy to staging', concurrency:1
     node {
                 //sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
-//        dir('BuildQuality'){
-//        sh 'sudo docker-compose up -d --build'
-  //  }
+         dir('BuildQuality'){
+         sh 'sudo docker-compose up -d --build'
+         }
                 
 }
 
@@ -79,7 +79,7 @@ stage name:'Shutdown staging'
     node {
                 
         dir('BuildQuality'){
-//       sh 'sudo docker-compose stop'
+        sh 'sudo docker-compose stop'
     }
                 
 }
