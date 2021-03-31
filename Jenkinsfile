@@ -66,7 +66,7 @@ node('UbuntuSlave') {
         }
 
         stage('Run Tests') {
-       //     sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://seleniumhub:4444/wd/hub clean test "
+              sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://10.240.0.8:4444/wd/hub clean test "
         }
         stage('Functional Test Results') {
          //   junit '**/target/surefire-reports/TEST-*.xml'
