@@ -62,7 +62,7 @@ node('UbuntuSlave') {
 
         stage('Get Functional Test Scripts'){                        
               git 'https://github.com/prasanna7763/jenkins-selenium-int-testing.git'
-              mvnHome = tool 'Maven'
+              mvnHome = tool 'MVN'
         }
 
         stage('Run Tests') {
